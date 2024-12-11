@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Net;
+using System.Net.Http;
+using System.IO;
+using System.Diagnostics;
 
 namespace Kylosov
 {
@@ -20,32 +18,27 @@ namespace Kylosov
     /// </summary>
     public partial class MainWindow : Window
     {
+        ApiClient ApiClient;
         public MainWindow()
         {
             InitializeComponent();
+
+            ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
+            System.Net.ServicePointManager.Expect100Continue = false;
         }
 
         private async void AuthBTN_Click(object sender, RoutedEventArgs e)
         {
-            var gogs = new Gogs("Kylosov", "MatveiKylosov");
-
-            // Выполняем асинхронную авторизацию
-            bool response = await gogs.AuthorizationAsync();
-
-            if (response)
+            var apiClient = new ApiClient();
+            try
             {
-                // Если авторизация успешна
-                Auth.Visibility = Visibility.Hidden;
+                string result = await apiClient.AuthenticateAsync(Login.Text, Password.Password, Server.Text);
 
-                // Здесь добавьте вызов метода для получения репозиториев, если он есть
-                // Например:
-                // var repositories = await gogs.GetRepositoriesAsync();
-                MessageBox.Show("Авторизация успешна", "Успех");
+                MessageBox.Show(result, "Результат авторизации", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else
+            catch (Exception ex)
             {
-                // Если авторизация не удалась
-                MessageBox.Show("Не удалось авторизоваться", "Ошибка");
+                MessageBox.Show($"Произошла ошибка: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

@@ -8,6 +8,9 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel x:Name="Auth" Orientation="Vertical" VerticalAlignment="Center">
+            <TextBlock Text="Сервер" Margin="10,10,300,10" FontSize="24px" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox x:Name="Server" Height="50px" Margin="10,10,10,10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="500px"/>
+
             <TextBlock Text="Логин" Margin="10,10,300,10" FontSize="24px" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <TextBox x:Name="Login" Height="50px" Margin="10,10,10,10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="500px"/>
             
