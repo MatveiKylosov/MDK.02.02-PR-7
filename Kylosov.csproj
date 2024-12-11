@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Gogs.cs" />
     <Compile Include="RepositoyUserControl.xaml.cs">
       <DependentUpon>RepositoyUserControl.xaml</DependentUpon>
     </Compile>

@@ -25,18 +25,26 @@ namespace Kylosov
             InitializeComponent();
         }
 
-        private void AuthBTN_Click(object sender, RoutedEventArgs e)
+        private async void AuthBTN_Click(object sender, RoutedEventArgs e)
         {
-            var responseCode = 200;
+            var gogs = new Gogs("Kylosov", "MatveiKylosov");
 
-            if (responseCode == 200)
+            // Выполняем асинхронную авторизацию
+            bool response = await gogs.AuthorizationAsync();
+
+            if (response)
             {
+                // Если авторизация успешна
                 Auth.Visibility = Visibility.Hidden;
-                var repositories = /*GetRepositories()*/ 1;
-                
+
+                // Здесь добавьте вызов метода для получения репозиториев, если он есть
+                // Например:
+                // var repositories = await gogs.GetRepositoriesAsync();
+                MessageBox.Show("Авторизация успешна", "Успех");
             }
             else
             {
+                // Если авторизация не удалась
                 MessageBox.Show("Не удалось авторизоваться", "Ошибка");
             }
         }
