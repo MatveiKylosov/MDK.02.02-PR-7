@@ -24,5 +24,21 @@ namespace Kylosov
         {
             InitializeComponent();
         }
+
+        private void AuthBTN_Click(object sender, RoutedEventArgs e)
+        {
+            var responseCode = 200;
+
+            if (responseCode == 200)
+            {
+                Auth.Visibility = Visibility.Hidden;
+                var repositories = /*GetRepositories()*/ 1;
+                
+            }
+            else
+            {
+                MessageBox.Show("Не удалось авторизоваться", "Ошибка");
+            }
+        }
     }
 }

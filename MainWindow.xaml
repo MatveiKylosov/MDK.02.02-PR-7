@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <StackPanel x:Name="Auth" Orientation="Vertical" VerticalAlignment="Center">
+            <TextBlock Text="Логин" Margin="10,10,300,10" FontSize="24px" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox x:Name="Login" Height="50px" Margin="10,10,10,10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="500px"/>
+            
+            <TextBlock Text="Пароль" Margin="10,10,300,10" FontSize="24px" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <PasswordBox x:Name="Password" Height="50px" Margin="10,10,10,10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="500px"/>
+
+            <Button x:Name="AuthBTN" Height="50px" Margin="10,10,10,10" VerticalAlignment="Center" HorizontalAlignment="Center" Width="500px" Content="Войти" Click="AuthBTN_Click" />
+        </StackPanel>
+
+        <StackPanel x:Name="Parrent"/>
     </Grid>
 </Window>
